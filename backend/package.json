@@ -2,6 +2,8 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+  "node": "11.12.0",
+  "npm": "6.7.0",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
