@@ -1,11 +1,16 @@
+require('dotenv').config()
 const express = require('express')
+
 const cors = require('cors')
 const app = express()
-const PORT = 3003
+const PORT = process.env.PORT || 3003
 const groceriesControllers = require('./controllers/groceries.js')
 
 
 const mongoose = require('mongoose')
+
+
+const MONGODB_URI = process.env.MONGODB_URI ||'mongodb://localhost:27017/groceries'
 
 //...farther down the page
 
@@ -15,7 +20,7 @@ mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 
 //...farther down the page
 
-mongoose.connect('mongodb://localhost:27017/groceries', { useNewUrlParser: true })
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongoose...')
 })
@@ -36,7 +41,7 @@ const corsOptions = {
   }
 }
 
-app.use(cors())
+app.use(cors(corsOptions))
 // we should add whitelist to cors
 app.use(express.json());
 
