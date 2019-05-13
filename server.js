@@ -44,6 +44,9 @@ const corsOptions = {
 app.use(cors(corsOptions))
 // we should add whitelist to cors
 app.use(express.json());
+app.get('/', (req, res)=> {
+  res.send('index')
+})
 
 app.use('/groceries', groceriesControllers)
 
